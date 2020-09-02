@@ -1,0 +1,31 @@
+title: WebRadio Lycée Georges Sand
+email: lyc.sand.club.informatique@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  WebRadio du Lycée Georges Sand | Sur ce site vous trouverez toute l’actualité de notre webradio.
+# uncomment for github pages utilisation
+baseurl: /webradio # the subpath of your site, e.g. /blog
+url: https://lyc-sand.github.io/webradio # the base hostname & protocol for your site, e.g. http://example.com
+# uncomment for local utilisation and build
+# baseurl: ""
+# url: ""
+twitter_username: LyceeSandDomont
+github_username: lyc-sand
+
+markdown: kramdown
+permalink: listen/:categories/:title
+collections:
+  - culture
+  - author
+  - team
+
+collections_dir: podcast
+collections:
+  culture:
+    output: true
+    permalink: /culture/:categories/:name
+  author:
+    output: false
+    permalink: /authors/list
+  team:
+    output: false
+    permalink: /team/list

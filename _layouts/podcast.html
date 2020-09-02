@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+
+  <body>
+    {% include header.html %}
+
+    <div class="site-blocks-cover inner-page-cover bg-light mb-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 text-center">
+            <a href="#">{{page.author}} </a><span class="mx-2">&bullet;</span> {{ page.date | date: "%b %-d, %Y"}} <span class="mx-2">&bullet;</span> {{ page.date | date: "%T"}}
+            <h1 class="mb-3">{{page.title}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container play-wrap">
+      <div class="player mb-5">
+        <audio id="player2" preload="none" controls style="max-width: 100%">
+          <source src="{{site.url}}/{{page.audio}}" type="audio/mp3">
+          </audio>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-3 ml-auto">
+            <div class="featured-user  mb-5 mb-lg-0">
+              <h3 class="mb-4">Participants au podcast</h3>
+              <ul class="list-unstyled">
+                {% for post in site.team %}
+                <li>
+                  <a href="#" class="d-flex align-items-center">
+                    <img src="{{site.url}}/{{post.image}}" alt="{{post.author}}" class="img-fluid mr-2">
+                    <div class="podcaster">
+                      <span class="d-block">{{post.author}}</span>
+                      <span class="small">{{post.number}}</span>
+                    </div>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-7 pb-5 mr-auto">
+            {{content}}
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section bg-light">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-12 text-center">
+              <h2 class="font-weight-bold text-black">Autres Podcasts</h2>
+            </div>
+          </div>
+          <div class="row">
+            {% for post in site.culture limit:2 %}
+            <div class="col-md-6">
+              <div class="d-block podcast-entry bg-white mb-5" data-aos="fade-up">
+                <div class="image w-100" style="height: 300px; background-image: url('{{post.image}}');"></div>
+                <div class="text w-100">
+
+                  <h3 class="font-weight-light"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></h3>
+                  <div class="text-white mb-3"><span class="text-black-opacity-05"><small>Par {{post.author}} <span class="sep">/</span> {{ post.date | date: "%-d %B %Y"}} <span class="sep">/</span> {{ post.date | date: "%T"}}</small></span></div>
+                  <p class="mb-4">{{post.description}}</p>
+
+
+                  <div class="player">
+                    <audio id="player2" preload="none" controls style="max-width: 100%">
+                      <source src="{{site.url}}/{{post.audio}}" type="audio/mp3">
+                      </audio>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class="site-section bg-light block-13">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-md-12 text-center">
+                  <h2 class="font-weight-bold text-black">L'équipe WebRadio</h2>
+                </div>
+              </div>
+              <div class="nonloop-block-13 owl-carousel">
+                {% for post in site.team %}
+                <div class="text-center p-3 p-md-5 bg-white">
+                  <div class="mb-4">
+                    <img src="{{site.url}}/{{post.image}}" alt="{{post.author}}" class="w-50 mx-auto img-fluid rounded-circle">
+                  </div>
+                  <div class="">
+                    <h3 class="font-weight-light h5">{{post.author}}</h3>
+                    <p>{{post.description}}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+    {% include footer.html %}
+
+    {% include script.html %}
+  </body>
+</html>
